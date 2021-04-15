@@ -22,7 +22,7 @@ class App {
     addEventListeners() {
       document.body.addEventListener("click", (e) => {
         this.handleFormClick(e);
-        //these has to be add on the body as when the code first run no note is being dispalyed yet
+        
         this.selectNote(e);
         this.openModal(e);
         this.deleteNote(e);
@@ -118,9 +118,7 @@ class App {
     openTooltip(event) {
       if (!event.target.matches(".toolbar-color")) return;
       this.id = event.target.parentNode.parentNode.parentNode.dataset.id;
-      //could get id from the event target instead traverse dom, add note id on the toolbar-color
-      //this.id = event.target.dataset.id
-      // <i class="toolbar-color" data-id=${note.id}>
+      
       const noteCoords = event.target.getBoundingClientRect();
       const horizontal = noteCoords.left;
       const vertical = window.scrollY - 20;
@@ -174,9 +172,7 @@ class App {
       e.stopPropagation();
       if (!event.target.matches(".toolbar-delete")) return;
       const id = event.target.parentNode.parentNode.parentNode.dataset.id;
-      //could get id from the event target instead traverse dom, add note id on the toolbar-color
-      //this.id = event.target.dataset.id
-      // <i class="toolbar-delete" data-id=${note.id}>
+      
       this.notes = this.notes.filter((note) => note.id !== Number(id));
       this.render();
     }
